@@ -8,10 +8,11 @@ pipeline {
             }
         }
         stage('DeployToStaging') {
+            when {
+                branch 'master'
+            }
             steps {
-                when {
-                    branch 'master'
-                }
+                
                 // withCredentials([usernamePassword(credentialsId: 'webserver_login', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                 //     sshPublisher alwaysPublishFromMaster: true, publishers: [
                 //         sshPublisherDesc(configName: 'staging', transfers: [
