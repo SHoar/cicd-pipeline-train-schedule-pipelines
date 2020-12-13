@@ -3,8 +3,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh './gradlew build'
-                archiveArtifacts artifacts: 'dist/cicd-pipeline-trains.zip'
+                sh './gradlew build --no-daemon'
+                sh 'ls -al'
+                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
     }
