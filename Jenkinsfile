@@ -8,9 +8,6 @@ pipeline {
             }
         }
         stage('DeployToStaging') {
-            when {
-                master
-            }
             steps {
                 withCredentials(usernamePassword: [credentialsId: 'webserver_login', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME']) {
                     sshPublisher(publishers: [
